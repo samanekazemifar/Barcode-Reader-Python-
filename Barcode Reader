@@ -1,0 +1,19 @@
+# Make sure you have the pyzbar and PIL (Python Imaging Library) libraries installed 
+# pip install pyzbar
+# pip install Pillow
+
+from pyzbar.pyzbar import decode
+from PIL import Image
+
+# Load the image
+image_path = 'path_to_your_image.png'
+image = Image.open(image_path)
+
+# Decode barcodes in the image
+decoded_barcodes = decode(image)
+
+# Print the decoded information
+for barcode in decoded_barcodes:
+    barcode_data = barcode.data.decode('utf-8')
+    barcode_type = barcode.type
+    print(f"Barcode Type: {barcode_type}, Data: {barcode_data}")
